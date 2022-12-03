@@ -5,7 +5,9 @@ import 'package:flutter_firebase_ddd_with_bloc/domain/core/failure.dart';
 @immutable
 abstract class ValueObject<T> {
   const ValueObject();
-   Either<ValueFailure<T>, T> get value;
+  Either<ValueFailure<T>, T> get value;
+
+  bool isValid() => value.isRight();
 
   @override
   bool operator ==(covariant ValueObject other) {
