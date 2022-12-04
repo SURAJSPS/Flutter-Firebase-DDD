@@ -45,38 +45,44 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyA5G2k_GHskwdkVqLgokaGvngv03n6FKTU',
-    appId: '1:868370830004:web:88744d62611e5472047de1',
+    appId: '1:868370830004:web:6b915628d5443cb3047de1',
     messagingSenderId: '868370830004',
     projectId: 'flutter-firebse-ddd',
     authDomain: 'flutter-firebse-ddd.firebaseapp.com',
+    databaseURL: 'https://flutter-firebse-ddd-default-rtdb.firebaseio.com',
     storageBucket: 'flutter-firebse-ddd.appspot.com',
-    measurementId: 'G-8MG81TTZWV',
+    measurementId: 'G-9MF2DZ9W67',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDnPCJLNs3zLLQ0etZt2H6kzaq1yYEUy6U',
-    appId: '1:868370830004:android:6f5ef11b98d2d1ee047de1',
+    appId: '1:868370830004:android:1b63b74c3cfcbedc047de1',
     messagingSenderId: '868370830004',
     projectId: 'flutter-firebse-ddd',
+    databaseURL: 'https://flutter-firebse-ddd-default-rtdb.firebaseio.com',
     storageBucket: 'flutter-firebse-ddd.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyC6yy-8IBFBrNxgRniTFK3DgRjLAw5V8WQ',
-    appId: '1:868370830004:ios:f4a5df1469e12a4e047de1',
+    appId: '1:868370830004:ios:efe16a9878ee65b5047de1',
     messagingSenderId: '868370830004',
     projectId: 'flutter-firebse-ddd',
+    databaseURL: 'https://flutter-firebse-ddd-default-rtdb.firebaseio.com',
     storageBucket: 'flutter-firebse-ddd.appspot.com',
+    androidClientId: '868370830004-t9ofmlkrfk73n61bqqsbppbgemptqejf.apps.googleusercontent.com',
     iosClientId: '868370830004-ark2no5aajhd125jpj8rtdokj22jina7.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterFirebaseDddWithBloc',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyC6yy-8IBFBrNxgRniTFK3DgRjLAw5V8WQ',
-    appId: '1:868370830004:ios:f4a5df1469e12a4e047de1',
+    appId: '1:868370830004:ios:efe16a9878ee65b5047de1',
     messagingSenderId: '868370830004',
     projectId: 'flutter-firebse-ddd',
+    databaseURL: 'https://flutter-firebse-ddd-default-rtdb.firebaseio.com',
     storageBucket: 'flutter-firebse-ddd.appspot.com',
+    androidClientId: '868370830004-t9ofmlkrfk73n61bqqsbppbgemptqejf.apps.googleusercontent.com',
     iosClientId: '868370830004-ark2no5aajhd125jpj8rtdokj22jina7.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterFirebaseDddWithBloc',
   );

@@ -4,11 +4,14 @@ import 'package:flutter_firebase_ddd_with_bloc/domain/auth/auth_failure.dart';
 import 'package:flutter_firebase_ddd_with_bloc/domain/auth/i_auth_facade.dart';
 import 'package:flutter_firebase_ddd_with_bloc/domain/auth/value_object.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'sign_in_form_event.dart';
 part 'sign_in_form_state.dart';
 part 'sign_in_form_bloc.freezed.dart';
 
+
+@injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   SignInFormBloc(this._authFacade) : super(SignInFormState.initial()) {
     on<SignInWithEmaiAndPassword>(
