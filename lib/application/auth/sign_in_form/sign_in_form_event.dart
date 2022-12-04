@@ -6,9 +6,11 @@ class SignInFormEvent with _$SignInFormEvent {
       EmailChanged;
   const factory SignInFormEvent.passwordChanged({required String password}) =
       PasswordChanged;
-  const factory SignInFormEvent.signInWithGoogle() = SignInWithGoogle;
-  const factory SignInFormEvent.registerWithEmailAndPassword() =
-      RegisterWithEmaiAndPassword;
-  const factory SignInFormEvent.signInWithEmailAndPassword() =
-      SignInWithEmaiAndPassword;
+  const factory SignInFormEvent.signInWithGooglePressed() =
+      SignInWithGooglePressed;
+
+  const factory SignInFormEvent.registerWithEmailAndPasswordPressed() =
+      RegisterWithEmailAndPasswordPressed;
+  const factory SignInFormEvent.signInWithEmailAndPasswordPressed() =
+      SignInWithEmailAndPasswordPressed;
 }
