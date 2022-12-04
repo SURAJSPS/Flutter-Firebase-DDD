@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../sign_in/sign_in_page.dart';
+
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
 
@@ -7,12 +9,16 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
+      home: const SignInPage(),
+      theme: ThemeData.light().copyWith(
+        primaryColor: Colors.green[800],
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          secondary: Colors.blueAccent,
         ),
-        body: const Center(
-          child: Text('Hello World'),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
         ),
       ),
     );
