@@ -16,9 +16,8 @@ class FirebaseAuthFacade implements IAuthFacade {
   final GoogleSignIn _googleSignIn;
 
   @override
-  Future<Option<authenticated.User>> getSignedInUser() =>
-      Future.delayed(const Duration(milliseconds: 300))
-          .then((value) => optionOf(_firebaseAuth.currentUser?.toDomain()));
+  Future<Option<authenticated.User>> getSignedInUser() async =>
+      optionOf(_firebaseAuth.currentUser?.toDomain());
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({

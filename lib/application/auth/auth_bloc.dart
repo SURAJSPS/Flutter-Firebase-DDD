@@ -24,7 +24,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     userOption.fold(
       () => emit(const AuthState.unauthenticated()),
-      (a) => emit(const AuthState.authenticated()),
+      (_) => emit(const AuthState.authenticated()),
     );
   }
 

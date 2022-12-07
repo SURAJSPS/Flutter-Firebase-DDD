@@ -37,7 +37,7 @@ class SignInForm extends StatelessWidget {
                 style: TextStyle(fontSize: 50),
               ),
               const SizedBox(height: 8),
-              TextFormField(
+              /* TextFormField(
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email),
                   labelText: 'Email',
@@ -58,9 +58,31 @@ class SignInForm extends StatelessWidget {
                       (_) => null,
                     ),
                 autocorrect: false,
+              ),*/
+              TextFormField(
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.email),
+                  labelText: 'Email',
+                ),
+                onChanged: (value) => context.read<SignInFormBloc>().add(
+                      SignInFormEvent.emailChanged(email: value),
+                    ),
+                validator: (value) => context
+                    .read<SignInFormBloc>()
+                    .state
+                    .emailAddress
+                    .value
+                    .fold(
+                      (f) => f.maybeMap(
+                        orElse: () => null,
+                        auth: (_) => 'Invalid Email',
+                      ),
+                      (_) => null,
+                    ),
+                autocorrect: false,
               ),
               const SizedBox(height: 8),
-              TextFormField(
+              /* TextFormField(
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.lock),
                   labelText: 'Password',
@@ -77,6 +99,26 @@ class SignInForm extends StatelessWidget {
                         (f) => f.maybeMap(
                             orElse: () => null,
                             shortPassword: (_) => "Short Password"),
+                        (_) => null),
+                autocorrect: false,
+                obscureText: true,
+              ),*/
+              TextFormField(
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.lock),
+                  labelText: 'Password',
+                ),
+                onChanged: (value) => context.read<SignInFormBloc>().add(
+                      SignInFormEvent.passwordChanged(password: value),
+                    ),
+                validator: (value) => context
+                    .read<SignInFormBloc>()
+                    .state
+                    .password
+                    .value
+                    .fold(
+                        (f) => f.maybeMap(
+                            orElse: () => null, auth: (_) => "Short Password"),
                         (_) => null),
                 autocorrect: false,
                 obscureText: true,

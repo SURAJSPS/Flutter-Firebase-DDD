@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_firebase_ddd_with_bloc/domain/core/value_validators.dart';
 
 import '../core/failure.dart';
-import '../core/value_object.dart';
+import '../core/value_objects.dart';
 
 class EmailAddress extends ValueObject<String> {
   @override
