@@ -1,12 +1,9 @@
-import 'dart:html';
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter_firebase_ddd_with_bloc/domain/core/value_objects.dart';
 import 'package:flutter_firebase_ddd_with_bloc/domain/notes/todo_item.dart';
 import 'package:flutter_firebase_ddd_with_bloc/domain/notes/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kt_dart/collection.dart';
-
 import '../core/failure.dart';
 
 part 'note.freezed.dart';
