@@ -27,7 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> signedOut(SignedOut event, Emitter<AuthState> emit) async {
-    await _authFacade.getSignedInUser();
+    await _authFacade.signOut();
     emit(const AuthState.unauthenticated());
   }
 }
