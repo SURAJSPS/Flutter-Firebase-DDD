@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../application/auth/auth_bloc.dart';
@@ -14,7 +15,9 @@ class SplashPage extends StatelessWidget {
         state.map(
           initial: (_) {},
           authenticated: (_) {
-            print("I am authenticated!");
+            if (kDebugMode) {
+              print("I am authenticated!");
+            }
 
             context.read<AuthBloc>().add(const AuthEvent.signedOut());
             // context.router.replace(const SignInRoute());
