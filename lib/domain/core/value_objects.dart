@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_firebase_ddd_with_bloc/domain/core/errors.dart';
 import 'package:flutter_firebase_ddd_with_bloc/domain/core/failure.dart';
+import 'package:flutter_firebase_ddd_with_bloc/domain/core/value_validators.dart';
 import 'package:uuid/uuid.dart';
 
 @immutable
@@ -56,4 +57,24 @@ class UniqueId extends ValueObject<String> {
   }
 
   const UniqueId._(this.value);
+}
+
+class StringSingleLine extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory StringSingleLine(String? input) {
+    assert(input != null);
+    return StringSingleLine._(
+      validateSingleLine(input!),
+    );
+  }
+  factory StringSingleLine.fromUniqueString(String? uniqueString) {
+    // assert(uniqueString != null);
+    return StringSingleLine._(
+      right(uniqueString!),
+    );
+  }
+
+  const StringSingleLine._(this.value);
 }

@@ -9,9 +9,9 @@ Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   if (RegExp(emailRegex).hasMatch(input)) {
     return right(input);
   } else {
-    // return left(ValueFailure.invalidEmail(failedValue: input));
-    return left(
-        ValueFailure.auth(AuthFailure.invalidEmail(failedValue: input)));
+    return left(ValueFailure.invalidEmail(failedValue: input));
+    // return left(
+    //     ValueFailure.auth(AuthFailure.invalidEmail(failedValue: input)));
   }
 }
 
@@ -19,9 +19,9 @@ Either<ValueFailure<String>, String> validatePassword(String input) {
   if (input.length >= 6) {
     return right(input);
   } else {
-    // return left(ValueFailure.shortPassword(failedValue: input));
-    return left(
-        ValueFailure.auth(AuthFailure.shortPassword(failedValue: input)));
+    return left(ValueFailure.shortPassword(failedValue: input));
+    // return left(
+    //     ValueFailure.auth(AuthFailure.shortPassword(failedValue: input)));
   }
 }
 
@@ -32,8 +32,9 @@ Either<ValueFailure<String>, String> validateMaxStringLength(
   if (input.length <= maxLength) {
     return right(input);
   } else {
-    return left(ValueFailure.notes(
-        NoteValueFailure.exceedingLength(failedValue: input, max: maxLength)));
+    return left(
+        ValueFailure.exceedingLength(failedValue: input, mex: maxLength));
+    // return left(ValueFailure.notes(NoteValueFailure.exceedingLength(failedValue: input, max: maxLength)));
   }
 }
 
@@ -41,16 +42,17 @@ Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
   if (input.isNotEmpty) {
     return right(input);
   } else {
-    return left(ValueFailure.notes(NoteValueFailure.empty(failedValue: input)));
+    return left(ValueFailure.empty(failedValue: input));
+    // return left(ValueFailure.notes(NoteValueFailure.empty(failedValue: input)));
   }
 }
 
 Either<ValueFailure<String>, String> validateSingleLine(String input) {
-  if (input.contains("\n")) {
+  if (!input.contains("\n")) {
     return right(input);
   } else {
-    return left(
-        ValueFailure.notes(NoteValueFailure.multiLine(failedValue: input)));
+    return left(ValueFailure.multiLine(failedValue: input));
+    // return left(ValueFailure.notes(NoteValueFailure.multiLine(failedValue: input)));
   }
 }
 
@@ -59,7 +61,9 @@ Either<ValueFailure<KtList<T>>, KtList<T>> validateMaxListLength<T>(
   if (input.size <= maxLength) {
     return right(input);
   } else {
-    return left(ValueFailure.notes(
-        NoteValueFailure.listTooLong(failedValue: input, max: maxLength)));
+    return left(ValueFailure.listTooLong(failedValue: input, max: maxLength));
+
+    // return left(ValueFailure.notes(
+    //     NoteValueFailure.listTooLong(failedValue: input, max: maxLength)));
   }
 }

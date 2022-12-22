@@ -1,11 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.flutter_firebase_ddd_with_bloc">
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
    <application
+
         android:label="flutter_firebase_ddd_with_bloc"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
+
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"

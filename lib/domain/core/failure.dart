@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'failure.freezed.dart';
-/*
 
 @freezed
 abstract class ValueFailure<T> with _$ValueFailure<T> {
@@ -27,11 +26,11 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
     required int max,
   }) = ListTooLong<T>;
 }
-*/
 
 /// Separated ValueFailure Function
 ///
 /// Commented because not get how to call
+/*
 
 @freezed
 abstract class ValueFailure<T> with _$ValueFailure<T> {
@@ -67,3 +66,4 @@ abstract class NoteValueFailure<T> with _$NoteValueFailure {
     required int max,
   }) = ListTooLong<T>;
 }
+*/

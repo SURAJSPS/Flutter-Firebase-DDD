@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../application/auth/auth_bloc.dart';
@@ -15,16 +14,18 @@ class SplashPage extends StatelessWidget {
         state.map(
           initial: (_) {},
           authenticated: (_) {
-            if (kDebugMode) {
-              print("I am authenticated!");
-            }
+            print("I am authenticated!");
 
-            context.read<AuthBloc>().add(const AuthEvent.signedOut());
-            // context.router.replace(const SignInRoute());
+            context.router.replace(
+              const NotesOverviewRoute(),
+            );
           },
-          unauthenticated: (_) => context.router.replace(
-            const SignInRoute(),
-          ),
+          unauthenticated: (_) {
+            print("I am unauthenticated!");
+            context.router.replace(
+              const SignInRoute(),
+            );
+          },
         );
       },
       child: const Scaffold(

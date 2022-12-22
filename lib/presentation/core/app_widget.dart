@@ -9,20 +9,25 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appRouter = AppRouter();
+    final _appRouter = getIt<AppRouter>();
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (context) =>
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
-        )
+        ),
       ],
       child: MaterialApp.router(
-        title: 'Material App',
-        routerDelegate: appRouter.delegate(),
-        routeInformationParser: appRouter.defaultRouteParser(),
+        title: 'Notes',
+        routerDelegate: _appRouter.delegate(),
+        routeInformationParser: _appRouter.defaultRouteParser(),
+        debugShowCheckedModeBanner: false,
         theme: ThemeData.light().copyWith(
-          primaryColor: Colors.green[800],
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: Colors.blue[900],
+          ),
+          primaryColor: Colors.green,
           colorScheme: ColorScheme.fromSwatch().copyWith(
             secondary: Colors.blueAccent,
           ),

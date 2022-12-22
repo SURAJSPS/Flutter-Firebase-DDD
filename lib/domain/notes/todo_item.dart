@@ -8,20 +8,21 @@ part 'todo_item.freezed.dart';
 
 @freezed
 abstract class TodoItem implements _$TodoItem {
-  const TodoItem._();
   const factory TodoItem({
     required UniqueId id,
     required TodoName name,
     required bool done,
   }) = _TodoItem;
 
+  const TodoItem._();
+
   factory TodoItem.empty() => TodoItem(
         id: UniqueId(),
-        name: TodoName(""),
+        name: TodoName(''),
         done: false,
       );
 
   Option<ValueFailure<dynamic>> get failureOption {
-    return name.value.fold((f) => some(f), (r) => none());
+    return name.value.fold((f) => some(f), (_) => none());
   }
 }

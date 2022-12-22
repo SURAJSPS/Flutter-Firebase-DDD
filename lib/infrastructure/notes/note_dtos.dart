@@ -15,7 +15,7 @@ part 'note_dtos.g.dart';
 abstract class NoteDto implements _$NoteDto {
   const NoteDto._();
   const factory NoteDto({
-    @JsonKey(ignore: true)  String? id,
+    @JsonKey(ignore: true) String? id,
     required String body,
     required int color,
     required List<TodoItemDto> todos,

@@ -1,7 +1,11 @@
 import 'package:another_flushbar/flushbar_helper.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_firebase_ddd_with_bloc/application/auth/sign_in_form/sign_in_form_bloc.dart';
+
+import '../../../application/auth/auth_bloc.dart';
+import '../../routes/router.gr.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({Key? key}) : super(key: key);
@@ -21,8 +25,13 @@ class SignInForm extends StatelessWidget {
                             invalidEmailAndPasswordCombination: (_) =>
                                 'Invalid email and password combination',
                           ),
-                        ).show(context), (r) {
-                  // TODO: Navigate
+                        ).show(context), (_) {
+                  context.router.replace(
+                    const NotesOverviewRoute(),
+                  );
+                  context
+                      .read<AuthBloc>()
+                      .add(const AuthEvent.authCheckRequested());
                 }));
       },
       builder: (context, state) {
@@ -37,7 +46,7 @@ class SignInForm extends StatelessWidget {
                 style: TextStyle(fontSize: 50),
               ),
               const SizedBox(height: 8),
-              /* TextFormField(
+              TextFormField(
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email),
                   labelText: 'Email',
@@ -58,8 +67,8 @@ class SignInForm extends StatelessWidget {
                       (_) => null,
                     ),
                 autocorrect: false,
-              ),*/
-              TextFormField(
+              ),
+              /* TextFormField(
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email),
                   labelText: 'Email',
@@ -80,9 +89,9 @@ class SignInForm extends StatelessWidget {
                       (_) => null,
                     ),
                 autocorrect: false,
-              ),
+              ),*/
               const SizedBox(height: 8),
-              /* TextFormField(
+              TextFormField(
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.lock),
                   labelText: 'Password',
@@ -102,8 +111,8 @@ class SignInForm extends StatelessWidget {
                         (_) => null),
                 autocorrect: false,
                 obscureText: true,
-              ),*/
-              TextFormField(
+              ),
+              /*TextFormField(
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.lock),
                   labelText: 'Password',
@@ -122,7 +131,7 @@ class SignInForm extends StatelessWidget {
                         (_) => null),
                 autocorrect: false,
                 obscureText: true,
-              ),
+              ),*/
               const SizedBox(height: 8),
               Row(
                 children: [
