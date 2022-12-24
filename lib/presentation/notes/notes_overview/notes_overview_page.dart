@@ -43,7 +43,7 @@ class NotesOverviewPage extends StatelessWidget {
                         'Unexpected error occurred while deleting, please contact support.',
                     insufficientPermission: (_) => 'Insufficient permissions ❌',
                     unableToUpdate: (_) => 'Impossible error',
-                    unableToDelete: (_) => "Unable to delete",
+                    // unableToDelete: (_) => "Unable to delete",
                   ),
                 ).show(context),
               ),
@@ -61,13 +61,15 @@ class NotesOverviewPage extends StatelessWidget {
                   context.router.replace(const SignInRoute());
                 },
               ),
-              actions: [
-                const UncompletedSwitch(),
+              actions: const [
+                UncompletedSwitch(),
               ],
             ),
             body: const NotesOverViewBody(),
             floatingActionButton: FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                context.router.push(NoteFormRoute(editedNote: null));
+              },
               child: const Icon(Icons.add),
             ),
           ),

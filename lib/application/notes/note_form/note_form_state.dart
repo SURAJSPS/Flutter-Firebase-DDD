@@ -14,6 +14,7 @@ abstract class NoteFormState with _$NoteFormState {
         showErrorMessages: false,
         isEditing: false,
         isSaving: false,
-        saveFailureOrSuccessOption: none(),
+        saveFailureOrSuccessOption:
+            some(left(NoteFailure.insufficientPermission())),
       );
 }
