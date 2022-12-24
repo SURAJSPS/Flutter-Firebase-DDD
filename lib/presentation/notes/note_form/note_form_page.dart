@@ -7,6 +7,7 @@ import 'package:flutter_firebase_ddd_with_bloc/injection.dart';
 import '../../../application/notes/note_form/note_form_bloc.dart';
 import '../../../domain/notes/note.dart';
 import '../../routes/router.gr.dart';
+import 'widget/body_field_widget.dart';
 
 class NoteFormPage extends StatelessWidget {
   const NoteFormPage({Key? key, required this.editedNote}) : super(key: key);
@@ -109,6 +110,21 @@ class NoteFormPageScaffold extends StatelessWidget {
             },
           ),
         ],
+      ),
+      body: BlocBuilder<NoteFormBloc, NoteFormState>(
+        buildWhen: (p, c) => p.showErrorMessages != c.showErrorMessages,
+        builder: (context, state) {
+          return Form(
+            autovalidateMode: state.showErrorMessages,
+            child: SingleChildScrollView(
+              child: Column(
+                children: const [
+                  BodyField(),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }
