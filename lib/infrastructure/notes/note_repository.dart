@@ -114,7 +114,7 @@ class NoteRepository implements INoteRepository {
       if (e.message!.contains('PERMISSION_DENIED')) {
         return left(const NoteFailure.insufficientPermission());
       } else if (e.message!.contains('NOT_FOUND')) {
-        return left(const NoteFailure.unableToDelete());
+        return left(const NoteFailure.unableToUpdate());
       } else {
         return left(const NoteFailure.unexpected());
       }
