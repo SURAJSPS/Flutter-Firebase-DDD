@@ -13,7 +13,7 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
   }) = ShortPassword<T>;
   const factory ValueFailure.exceedingLength({
     required T failedValue,
-    required int mex,
+    required int max,
   }) = ExceedingLength<T>;
   const factory ValueFailure.empty({
     required T failedValue,

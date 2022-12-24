@@ -33,7 +33,7 @@ Either<ValueFailure<String>, String> validateMaxStringLength(
     return right(input);
   } else {
     return left(
-        ValueFailure.exceedingLength(failedValue: input, mex: maxLength));
+        ValueFailure.exceedingLength(failedValue: input, max: maxLength));
     // return left(ValueFailure.notes(NoteValueFailure.exceedingLength(failedValue: input, max: maxLength)));
   }
 }
