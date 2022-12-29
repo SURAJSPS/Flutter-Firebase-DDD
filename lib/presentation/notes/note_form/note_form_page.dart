@@ -4,10 +4,15 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_firebase_ddd_with_bloc/injection.dart';
+import 'package:flutter_firebase_ddd_with_bloc/presentation/notes/note_form/misc/todo_item_presentation_classes.dart';
+import 'package:provider/provider.dart';
 import '../../../application/notes/note_form/note_form_bloc.dart';
 import '../../../domain/notes/note.dart';
 import '../../routes/router.gr.dart';
+import 'widget/add_todo_tile_widget.dart';
 import 'widget/body_field_widget.dart';
+import 'widget/color_field_widget.dart';
+import 'widget/todo_list_widget.dart';
 
 class NoteFormPage extends StatelessWidget {
   const NoteFormPage({Key? key, required this.editedNote}) : super(key: key);
@@ -26,7 +31,7 @@ class NoteFormPage extends StatelessWidget {
               (failure) => FlushbarHelper.createError(
                 message: failure.map(
                   unexpected: (_) =>
-                      'Unexpected error occured, please contact support.',
+                      'Unexpected error occurred, please contact support.',
                   insufficientPermission: (_) => 'Insufficient permissions ❌',
                   unableToUpdate: (_) =>
                       "Couldn't update the note. Was it deleted from another device?",
@@ -114,13 +119,19 @@ class NoteFormPageScaffold extends StatelessWidget {
       body: BlocBuilder<NoteFormBloc, NoteFormState>(
         buildWhen: (p, c) => p.showErrorMessages != c.showErrorMessages,
         builder: (context, state) {
-          return Form(
-            autovalidateMode: state.showErrorMessages,
-            child: SingleChildScrollView(
-              child: Column(
-                children: const [
-                  BodyField(),
-                ],
+          return ChangeNotifierProvider(
+            create: (_) => FormTodos(),
+            child: Form(
+              autovalidateMode: state.showErrorMessages,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: const [
+                    BodyField(),
+                    ColorField(),
+                    AddTodoTile(),
+                    TodoList(),
+                  ],
+                ),
               ),
             ),
           );

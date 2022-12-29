@@ -24,6 +24,7 @@ abstract class NoteDto implements _$NoteDto {
 
   factory NoteDto.fromDomain(Note note) {
     return NoteDto(
+      id: note.id.getOrCrash(),
       body: note.body.getOrCrash(),
       todos: note.todos
           .getOrCrash()

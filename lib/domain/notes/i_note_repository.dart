@@ -5,7 +5,7 @@ import 'package:kt_dart/kt.dart';
 import 'note_failure.dart';
 
 abstract class INoteRepository {
-  //CRUD
+  //CRUDe
   // watch methods for R (read)
   Stream<Either<NoteFailure, KtList<Note>>> watchAll();
   Stream<Either<NoteFailure, KtList<Note>>> watchUncompleted();
