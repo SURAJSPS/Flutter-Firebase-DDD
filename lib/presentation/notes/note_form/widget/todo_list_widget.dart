@@ -13,7 +13,6 @@ import '../../../../domain/notes/value_objects.dart';
 
 class TodoList extends StatelessWidget {
   const TodoList({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return BlocListener<NoteFormBloc, NoteFormState>(

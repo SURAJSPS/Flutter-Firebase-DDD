@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:flutter_firebase_ddd_with_bloc/domain/auth/i_auth_facade.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
@@ -12,7 +12,7 @@ import '../../domain/auth/value_object.dart';
 class FirebaseAuthFacade implements IAuthFacade {
   FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn);
 
-  final firebase_auth.FirebaseAuth _firebaseAuth;
+  final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
 
   @override
@@ -24,8 +24,8 @@ class FirebaseAuthFacade implements IAuthFacade {
 
   @override
   Future<void> signOut() => Future.wait([
-        _googleSignIn.signOut(),
         _firebaseAuth.signOut(),
+        _googleSignIn.signOut(),
       ]);
 
   @override
@@ -42,7 +42,7 @@ class FirebaseAuthFacade implements IAuthFacade {
         password: passwordString,
       );
       return right(unit);
-    } on firebase_auth.FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use' ||
           e.code == "email-already-in-use".toUpperCase()) {
         return left(const AuthFailure.emailAlreadyInUse());
@@ -66,7 +66,7 @@ class FirebaseAuthFacade implements IAuthFacade {
         password: passwordString,
       );
       return right(unit);
-    } on firebase_auth.FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password' ||
           e.code == "wrong-password".toUpperCase() ||
           e.code == "user-not-found" ||
@@ -89,7 +89,7 @@ class FirebaseAuthFacade implements IAuthFacade {
 
       final googleAuth = await googleUser.authentication;
 
-      final authCredential = firebase_auth.GoogleAuthProvider.credential(
+      final authCredential = GoogleAuthProvider.credential(
         idToken: googleAuth.idToken,
         accessToken: googleAuth.accessToken,
       );
@@ -97,7 +97,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       return _firebaseAuth
           .signInWithCredential(authCredential)
           .then((r) => right(unit));
-    } on firebase_auth.FirebaseAuthException catch (_) {
+    } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
     }
   }
